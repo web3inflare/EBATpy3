@@ -5,7 +5,7 @@ from lib.console import EBATpy3_console
 
 def get_parser():
     parser = argparse.ArgumentParser(usage="""\n      Python3 EBATpy3.py -t 10 -p all""",
-                                     description='Based on Python3 Compatible EVM Blockchain Airdrop Tool Script Rapid Response Framework', )
+                                     description='Web3 Blockchain Airdrop Task Script Rapid Response Framework Developed Based on Python3', )
     p = parser.add_argument_group('EBATpy3 Arguments')
     p.add_argument("-p", "--payload", type=str,
                    help='Specify a single payload type or single, multiple payloads to execute. Use (,) to separate multiple payloads')
