@@ -17,7 +17,7 @@ def generate(num, length):
         # 表头
         field_name = ['wallet_address', 'wallet_key', 'wallet_mnemonic', 'twitter_user', 'twitter_pass',
                       'twitter_verify',
-                      'discord_token']
+                      'discord_token', 'aws_key', 'aws_secret']
         # 写入字段名，当做表头
         writer = csv.DictWriter(file, fieldnames=field_name)
         writer.writeheader()
