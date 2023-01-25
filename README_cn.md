@@ -86,9 +86,12 @@ from inspect import getfullargspec
 - 2023.1.25 首次上传
 
 ## 待办事项
-- [x]  优化钱包读取
-- [ ]  添加钱包生成器脚本
+- [ ]  优化钱包读取
+- [x]  添加钱包生成器脚本
 - [ ]  添加控制台模式
+- [ ]  修复 payload 规范
+- [ ]  添加测试网节点类型 payload (使用 aws)
+
 
 ## 支持
 如有bug 等问题，请打开issue 

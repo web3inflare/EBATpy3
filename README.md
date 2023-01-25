@@ -82,9 +82,12 @@ from inspect import getfullargspec
 - 2023.1.26  [Feature] Add a Wallet Generator 
 - 2023.1.25 First upload
 ## TODO
-- [x]  Optimize reading wallet list
-- [ ]  Add wallet generator
+- [ ]  Optimize reading wallet list
+- [x]  Add wallet generator
 - [ ]  Add console mode
+- [ ]  Fix the payload specification
+- [ ]  Add a testnet node type payload (using AWS)
+
 ## Support
 If you have a bug, please file an issue
 
