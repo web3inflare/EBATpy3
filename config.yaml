@@ -1,0 +1,4 @@
+TwoCaptcha:
+  key: 'xxxxx'
+Proxy_Api:
+  url: 'https://dvapi.doveproxy.net/'
