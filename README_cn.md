@@ -81,9 +81,12 @@ C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\site-packages
 from inspect import getfullargspec
 
 ```
+## Changelog
+- 2023.1.26  [功能] 添加钱包生成器 
+- 2023.1.25 首次上传
 
 ## 待办事项
-- [ ]  优化钱包读取
+- [x]  优化钱包读取
 - [ ]  添加钱包生成器脚本
 - [ ]  添加控制台模式
 

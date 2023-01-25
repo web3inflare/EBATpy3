@@ -78,9 +78,11 @@ Amend to
 from inspect import getfullargspec
 
 ```
-
+## Changelog
+- 2023.1.26  [Feature] Add a Wallet Generator 
+- 2023.1.25 First upload
 ## TODO
-- [ ]  Optimize reading wallet list
+- [x]  Optimize reading wallet list
 - [ ]  Add wallet generator
 - [ ]  Add console mode
 ## Support
