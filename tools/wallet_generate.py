@@ -21,8 +21,10 @@ def generate(num, length):
         # 写入字段名，当做表头
         writer = csv.DictWriter(file, fieldnames=field_name)
         writer.writeheader()
-        print("Start Generating Wallets")
-        pbar = tqdm(range(length))
+        print("[+] Start Generating Wallets")
+        print(f"[+] Number of wallets:{num}")
+        print(f"[+] mnemonic length :{length}")
+        pbar = tqdm(range(num))
         for i in pbar:
             pbar.set_description(desc='Web3inflare')
             Account.enable_unaudited_hdwallet_features()
@@ -46,7 +48,7 @@ def get_parser():
 def main():
     args = get_parser()
     generate(args.t, args.m)
-    print("The Wallet is Generated")
+    print("[*] The Wallet is Generated")
 
 
 if __name__ == '__main__':
