@@ -85,6 +85,7 @@ from inspect import getfullargspec
 ## 待办事项
 - [ ]  优化钱包读取
 - [ ]  添加钱包生成器脚本
+- [ ]  添加控制台模式
 
 ## 支持
 如有bug 等问题，请打开issue 

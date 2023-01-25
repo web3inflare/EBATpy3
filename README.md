@@ -82,7 +82,7 @@ from inspect import getfullargspec
 ## TODO
 - [ ]  Optimize reading wallet list
 - [ ]  Add wallet generator
-
+- [ ]  Add console mode
 ## Support
 If you have a bug, please file an issue
 
