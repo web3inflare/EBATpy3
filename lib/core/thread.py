@@ -30,6 +30,6 @@ class ThreadPool(object):
             current_task = self.task_queue.get()
             current_payload = current_task[0]
             current_target = current_task[1]
-            future = self.thread_pool.submit(current_payload, *current_target)
+            future = self.thread_pool.submit(current_payload, **current_target)
             self.futures[future] = current_target
         return concurrent.futures.as_completed(self.futures)

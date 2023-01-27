@@ -5,12 +5,12 @@
 @IDE ：PyCharm
 @Motto: 咕咕嘎嘎
 """
-
 import sys
 
 from lib.core import engine
 from lib.utils import output
 from lib.utils import payload_init
+from csv import DictReader
 
 
 def EBATpy3_console(args):
@@ -20,10 +20,16 @@ def EBATpy3_console(args):
         payload_module_list = payload_init.get_payload_module_list()
         output.show(payload_module_list)
         sys.exit()
-    # 指定文件
     if args.file:
-        for target in open(args.file, 'r').readlines():
-            target_list.append(target.replace('\n', ''))
+        # 读取文件
+        with open(args.file, mode='r') as read_obj:
+            dict_reader = DictReader(read_obj)
+            for i in list(dict_reader):
+                # 判断是否有表头
+                if 'wallet_address' not in i:
+                    output.status_print('[-] The CSV file format is incorrect', 2)
+                    sys.exit()
+                target_list.append(i)
     # 线程
     if args.thread:
         max_thread = args.thread
@@ -55,4 +61,3 @@ def EBATpy3_console(args):
         output.status_print(f'[-] The Program Terminated Abnormally{e}', 3)
         sys.exit(0)
     output.status_print('[*] Ending {0}'.format(output.get_time1()), 1)
-

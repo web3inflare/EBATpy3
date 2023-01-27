@@ -197,7 +197,7 @@ def show(payload_module_list):
     for payload_module in payload_module_list:
         path = payload_module.__file__
         try:
-            result = payload_module.run('wallet')
+            result = payload_module.payload_info()
             name = result['Name']
             payload_type = result['Type']
             network = result['Network']

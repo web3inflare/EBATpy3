@@ -1,11 +1,10 @@
 """
 @Time ： 2023/1/24 20:53
 @Auth ： Web3inFlare
-@File ：faucet_scrolltest.py
+@File ：faucet_testnet_scroll.py
 @IDE ：PyCharm
 @Motto: 咕咕嘎嘎
 """
-
 
 import requests
 import yaml
@@ -22,8 +21,8 @@ TwoCaptcha_Api = config['TwoCaptcha']['key']
 solver = TwoCaptcha(TwoCaptcha_Api)
 
 
-def faucet(address, get_recaptcha_token, proxies):
-    payload = f"-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"address\"\r\n\r\n{address}\r\n-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"h-captcha-response\"\r\n\r\n{get_recaptcha_token}\r\n-----011000010111000001101001--\r\n\r\n"
+def faucet(address, token, proxies):
+    payload = f"-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"address\"\r\n\r\n{address}\r\n-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"h-captcha-response\"\r\n\r\n{token}\r\n-----011000010111000001101001--\r\n\r\n"
     headers = {
         "Accept": "*/*",
         "Cache-Control": "no-cache",
@@ -37,29 +36,39 @@ def faucet(address, get_recaptcha_token, proxies):
         "Sec-Fetch-Site": "same-site",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36",
     }
-    response = requests.request("POST", "https://prealpha-api.scroll.io/faucet/api/claim", data=payload, headers=headers, proxies=proxies, verify=False)
+    response = requests.request("POST", "https://prealpha-api.scroll.io/faucet/api/claim", data=payload,
+                                headers=headers, proxies=proxies, verify=False)
     return response.text
 
 
-def run(address, *args):
+def payload_info():
     result = {
-        'Name': 'faucet_scrolltest',
+        'Name': 'faucet_testnet_scroll',
         'Author': 'web3inflare',
         'Type': 'faucet',
         'CreateDate': '2023-1-24',
-        'UpdateDate': '2023-1-24',
+        'UpdateDate': '2023-1-27',
         'Network': "testnet",
         'Description': "faucet Scroll Testnet",
         'Description_cn': "领取 Scroll ",
-        'Address': address,
+    }
+    return result
+
+
+def run(**kwargs):
+    wallet_address = kwargs['wallet_address']
+    result = {
+        'Name': 'faucet_testnet_scroll',
+        'Type': 'faucet',
+        'Address': wallet_address,
         'Succeed': False,
         'Payload_msg': ''
 
     }
     try:
-        get_recaptcha_token = \
+        get_captcha_token = \
             solver.hcaptcha('541838f2-e585-4726-b398-24102b1d4df8', "https://scroll.io/prealpha/faucet")['code']
-        faucet_result = faucet(address, get_recaptcha_token, get_proxy())
+        faucet_result = faucet(wallet_address, get_captcha_token, get_proxy())
         if 'eth_tx_hash' in faucet_result:
             result['Payload_msg'] = 'Faucet Succeed'
             result['Succeed'] = True

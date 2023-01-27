@@ -76,20 +76,32 @@ get Proxy API
 windows:
 C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\site-packages\parsimonious
 ```text
-# parsimonious.py
+# expressions.py
 修改为
+# from inspect import getargspec
 from inspect import getfullargspec
 
 ```
-## Changelog
-- 2023.1.26  [功能] 添加钱包生成器 
-- 2023.1.25 首次上传
+### 2023.1.27
+#### 变更 
+ - 变更 payload 规范
+ - 优化 文件读取
+#### 添加
+ - 添加 Scorll 水龙头 
+ - 添加 Taiko 水龙头
+ - 添加 Eth goerli 水龙头  (allthatnode.com)
+### 2023.1.26
+#### 添加 
+ - 添加 钱包生成器
+
+### 2023.1.25 
+ - 首次上传
 
 ## 待办事项
-- [ ]  优化钱包读取
+- [x]  优化钱包读取
 - [x]  添加钱包生成器脚本
 - [ ]  添加控制台模式
-- [ ]  修复 payload 规范
+- [x]  修复 payload 规范
 - [ ]  添加测试网节点类型 payload (使用 aws)
 
 

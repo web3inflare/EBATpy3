@@ -1,7 +1,7 @@
 """
 @Time ： 2023/1/24 19:16
 @Auth ： Web3inFlare
-@File ：faucet_ethgoerli_1.py
+@File ：faucet_testnet_eth_goerli_1.py
 @IDE ：PyCharm
 @Motto: 咕咕嘎嘎
 """
@@ -35,24 +35,34 @@ def faucet(address, get_recaptcha_token, proxies):
     return response.text
 
 
-def run(address, *args):
+def payload_info():
     result = {
-        'Name': 'faucet_ethgoerli_1',
+        'Name': 'faucet_testnet_eth_goerli_1',
         'Author': 'web3inflare',
         'Type': 'faucet',
         'CreateDate': '2023-1-24',
-        'UpdateDate': '2023-1-24',
+        'UpdateDate': '2023-1-27',
         'Network': "testnet",
         'Description': "faucet ethgoerli use (allthatnode.com) get 0.025 ETH",
         'Description_cn': "领取 ethgoerli 使用 allthatnode.com 获得 0.025 ETH",
-        'Address': address,
+    }
+    return result
+
+
+def run(**kwargs):
+    wallet_address = kwargs['wallet_address']
+    result = {
+        'Name': 'faucet_testnet_eth_goerli_1',
+        'Type': 'faucet',
+        'Address': wallet_address,
         'Succeed': False,
         'Payload_msg': ''
 
     }
     try:
-        get_recaptcha_token = solver.recaptcha('6Lf4qnYfAAAAAMHpsGAYma_WEWH6I9YCfrx7yLNb', "https://www.allthatnode.com/faucet/ethereum.dsrv")['code']
-        faucet_result = faucet(address, get_recaptcha_token, get_proxy())
+        get_recaptcha_token = solver.recaptcha('6Lf4qnYfAAAAAMHpsGAYma_WEWH6I9YCfrx7yLNb',
+                                               "https://www.allthatnode.com/faucet/ethereum.dsrv")['code']
+        faucet_result = faucet(wallet_address, get_recaptcha_token, get_proxy())
         if 'true' in faucet_result:
             if 'limited' in faucet_result:
                 result['Payload_msg'] = faucet_result

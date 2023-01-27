@@ -1,7 +1,7 @@
 """
 @Time ： 2023/1/24 23:25
 @Auth ： Web3inFlare
-@File ：faucet_taikotest.py
+@File ：faucet_testnet_taiko.py
 @IDE ：PyCharm
 @Motto: 咕咕嘎嘎
 """
@@ -74,9 +74,9 @@ def tw_post(token, add, proxy):
         return None
 
 
-def run(address, *args):
+def payload_info():
     result = {
-        'Name': 'faucet_taikotest',
+        'Name': 'faucet_testnet_taiko',
         'Author': 'web3inflare',
         'Type': 'faucet',
         'CreateDate': '2023-1-24',
@@ -84,7 +84,20 @@ def run(address, *args):
         'Network': "testnet",
         'Description': "faucet Taiko Testnet",
         'Description_cn': "领取 Taiko ",
-        'Address': address,
+
+    }
+    return result
+
+
+def run(**kwargs):
+    wallet_address = kwargs['wallet_address']
+    twitter_user = kwargs['twitter_user']
+    twitter_pass = kwargs['twitter_pass']
+    twitter_verify = kwargs['twitter_verify']
+    result = {
+        'Name': 'faucet_testnet_taiko',
+        'Type': 'faucet',
+        'Address': wallet_address,
         'Succeed': False,
         'Payload_msg': ''
 
@@ -98,15 +111,15 @@ def run(address, *args):
             return result
         # 尝试获取登陆成功的token
         try:
-            token = tw_login(args[1], args[2], args[3], proxy)
+            token = tw_login(twitter_user, twitter_pass, twitter_verify, proxy)
         except Exception as e:
             result['Payload_msg'] = e
             return result
         # 尝试发送推文
         try:
-            rest_id = tw_post(token, address, proxy)
+            rest_id = tw_post(token, wallet_address, proxy)
             if rest_id is not None:
-                tweeter_url = f"https://twitter.com/{args[1]}/status/{rest_id}"
+                tweeter_url = f"https://twitter.com/{twitter_user}/status/{rest_id}"
                 # 得到推文链接 开始领水
                 # 处理proxy 格式 得到 ip prot 格式
                 # 尝试发送
@@ -114,8 +127,8 @@ def run(address, *args):
                     ws_proxy = proxy['http'].replace("http://", "").strip(":")
                     ws = websocket.WebSocket()
                     ws.connect("wss://l1faucet.a1.taiko.xyz/api",
-                           http_proxy_host=f"{ws_proxy[0]}", http_proxy_port=f"{ws_proxy[1]}",
-                           proxy_type="http")
+                               http_proxy_host=f"{ws_proxy[0]}", http_proxy_port=f"{ws_proxy[1]}",
+                               proxy_type="http")
                     login_msg = {"url": f"{tweeter_url}", "tier": 0}
                     login_msg_json = json.dumps(login_msg)
                     ws.send(login_msg_json)
@@ -138,4 +151,3 @@ def run(address, *args):
 if __name__ == '__main__':
     test = run("0x8dc847af872947ac18d5d63fa646eb65d4d99560")
     print(test['Payload_msg'])
-

@@ -17,23 +17,32 @@ def get_balance(address):
     return balance
 
 
-def run(address, *args):
+def payload_info():
     result = {
         'Name': 'query_okt',
         'Author': 'web3inflare',
         'Type': 'query',
         'CreateDate': '2023-1-19',
-        'UpdateDate': '2023-1-20',
+        'UpdateDate': '2023-1-27',
         'Network': "mainnet",
         'Description': "query okt balance",
         'Description_cn': "查询 okt 余额",
-        'Address': address,
-        'Succeed': False,
-        'Payload_msg': ''
 
     }
+    return result
+
+
+def run(**kwargs):
+    wallet_address = kwargs['wallet_address']
+    result = {
+        'Name': 'query_okt',
+        'Type': 'query',
+        'Address': wallet_address,
+        'Succeed': False,
+        'Payload_msg': ''
+    }
     try:
-        result['Payload_msg'] = f'{get_balance(address)} Balance'
+        result['Payload_msg'] = f'{get_balance(wallet_address)} Balance'
         result['Succeed'] = True
         return result
     except Exception as e:

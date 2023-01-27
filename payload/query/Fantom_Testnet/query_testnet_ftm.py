@@ -1,7 +1,7 @@
 """
-@Time ： 2023/1/22 02:13
+@Time ： 2023/1/20 20:24
 @Auth ： Web3inFlare
-@File ：query_taikotest.py
+@File ：query_testnet_ftm.py
 @IDE ：PyCharm
 @Motto: 咕咕嘎嘎
 """
@@ -10,30 +10,39 @@ from web3 import Web3, HTTPProvider
 
 
 def get_balance(address):
-    rpc = 'https://l1rpc.a1.taiko.xyz'
+    rpc = 'https://rpc.ankr.com/fantom_testnet'
     checksum_address = Web3.toChecksumAddress(address)
     web3 = Web3(HTTPProvider(rpc))
     balance = web3.fromWei(web3.eth.get_balance(checksum_address), "ether")
     return balance
 
 
-def run(address, *args):
+def payload_info():
     result = {
-        'Name': 'query_taikotest',
+        'Name': 'query_testnet_ftm',
         'Author': 'web3inflare',
         'Type': 'query',
-        'CreateDate': '2023-1-22',
-        'UpdateDate': '2023-1-22',
+        'CreateDate': '2023-1-20',
+        'UpdateDate': '2023-1-27',
         'Network': "testnet",
-        'Description': "query Taiko L1 Testnet  testnet balance",
-        'Description_cn': "查询 Taiko L1  测试网 余额",
-        'Address': address,
+        'Description': "query ftmtestnet balance",
+        'Description_cn': "查询 ftm测试网 余额",
+    }
+    return result
+
+
+def run(**kwargs):
+    wallet_address = kwargs['wallet_address']
+    result = {
+        'Name': 'query_testnet_ftm',
+        'Type': 'query',
+        'Address': wallet_address,
         'Succeed': False,
         'Payload_msg': ''
 
     }
     try:
-        result['Payload_msg'] = f'{get_balance(address)} Balance'
+        result['Payload_msg'] = f'{get_balance(wallet_address)} Balance'
         result['Succeed'] = True
         return result
     except Exception as e:

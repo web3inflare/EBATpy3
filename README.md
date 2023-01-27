@@ -73,19 +73,34 @@ Registration  https://2captcha.com/
 windows:
 C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\site-packages\parsimonious
 ```text
-# parsimonious.py
+# expressions.py
 Amend to
+# from inspect import getargspec
 from inspect import getfullargspec
 
 ```
 ## Changelog
-- 2023.1.26  [Feature] Add a Wallet Generator 
-- 2023.1.25 First upload
+
+### 2023.1.27
+#### Changed 
+ - Fix the payload specification
+ - Fixed file read
+#### Added
+ - Add Scorll faucet 
+ - Add Taiko faucet
+ - add Eth goerli faucet  (allthatnode.com)
+### 2023.1.26
+#### Added 
+ - Add  Wallet Generator 
+
+### 2023.1.25 
+ - First upload
+
 ## TODO
-- [ ]  Optimize reading wallet list
+- [x]  Optimize reading wallet list
 - [x]  Add wallet generator
 - [ ]  Add console mode
-- [ ]  Fix the payload specification
+- [x]  Fix the payload specification
 - [ ]  Add a testnet node type payload (using AWS)
 
 ## Support

@@ -22,10 +22,8 @@ def run(target_list, payload_module_list, max_thread):
     try:
         thread_pool = thread.ThreadPool(max_thread)
         for current_target in target_list:
-            # 处理传入的列表,每一个payload 需要的参数不同
-            current_targets = current_target.split("----")
             # 提交到线程池中
-            [thread_pool.add_task(payload.run, current_targets) for payload in payload_module_list]
+            [thread_pool.add_task(payload.run, current_target) for payload in payload_module_list]
         # 线程执行后的回调信息
         futures = thread_pool.start_threadpool()
         # 打印所有的线程的任务结果

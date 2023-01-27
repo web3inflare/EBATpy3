@@ -112,7 +112,7 @@ def get_payload_module_list_by_type(module_type):
             pass
     # 在循环一遍拿到指定的类型
     for payload_module in payload_module_lists:
-        result = payload_module.run('wallet')
+        result = payload_module.payload_info()
         if module_type in result['Type']:
             output.status_print("[*] Load Payload Name:[{0}]".format(result['Name']), 0)
             payload_module_list.append(payload_module)
