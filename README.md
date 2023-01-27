@@ -85,10 +85,12 @@ from inspect import getfullargspec
 #### Changed 
  - Fix the payload specification
  - Fixed file read
+ - Fix the file directory
 #### Added
  - Add Scorll faucet 
  - Add Taiko faucet
  - add Eth goerli faucet  (allthatnode.com)
+ - Add Node payload type
 ### 2023.1.26
 #### Added 
  - Add  Wallet Generator 

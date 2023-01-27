@@ -193,6 +193,7 @@ def show(payload_module_list):
     type_playwright = 0  # 模拟
     type_mint = 0  # mint nft
     type_transfer = 0  # 转账
+    type_node = 0
     status_print('[*] Loading Payload ......', 0)
     for payload_module in payload_module_list:
         path = payload_module.__file__
@@ -213,6 +214,8 @@ def show(payload_module_list):
                 type_mint += 1
             elif 'transfer' in result['Type']:
                 type_transfer += 1
+            elif 'node' in result['Type']:
+                type_node += 1
             else:
                 type_faucet += 1
         except Exception as e:
@@ -238,8 +241,8 @@ def show(payload_module_list):
             print('    Description: {0}'.format(description))
             print('    Description_cn: {0}'.format(description_cn))
     print(
-        '''[*] Total Payload: {0} \n[~] Query: {1} Swap: {2} Faucet: {3} Mint: {4} Transfer: {5} Playwright: {6}'''
-        .format(len(payload_info_list), type_query, type_swap, type_faucet, type_mint, type_transfer, type_playwright))
+        '''[*] Total Payload: {0} \n[~] Query: {1} Swap: {2} Faucet: {3} Mint: {4} Transfer: {5} Playwright: {6} node: {7}'''
+        .format(len(payload_info_list), type_query, type_swap, type_faucet, type_mint, type_transfer, type_playwright,type_node))
 
 
 def output(futures):

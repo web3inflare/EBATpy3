@@ -48,6 +48,8 @@ def EBATpy3_console(args):
         payload_module_list = payload_init.get_payload_module_list_by_type(args.payload)
     elif 'transfer' == args.payload:
         payload_module_list = payload_init.get_payload_module_list_by_type(args.payload)
+    elif 'node' == args.payload:
+        payload_module_list = payload_init.get_payload_module_list_by_type(args.payload)
     elif args.payload:
         payload_module_list = payload_init.get_payload_module_list_by_search(args.payload.split(','))
     else:

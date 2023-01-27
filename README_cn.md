@@ -86,10 +86,12 @@ from inspect import getfullargspec
 #### 变更 
  - 变更 payload 规范
  - 优化 文件读取
+ - 调整目录
 #### 添加
  - 添加 Scorll 水龙头 
  - 添加 Taiko 水龙头
  - 添加 Eth goerli 水龙头  (allthatnode.com)
+ - 添加 node payload 类型
 ### 2023.1.26
 #### 添加 
  - 添加 钱包生成器
