@@ -1,7 +1,7 @@
 """
 @Time ： 2023/1/28 22:09
 @Auth ： Web3inFlare
-@File ：bridge_testnet_scroll_L1.py
+@File ：bridge_testnet_scroll_l1.py
 @IDE ：PyCharm
 @Motto: 咕咕嘎嘎
 """
@@ -64,7 +64,7 @@ def bridge(wallet_address, wallet_key):
                 transfer_bridge_eth_result = transfer_bridge_eth(w3, wallet_address, wallet_key)
             else:
                 return 'Insufficient balance'
-            return f'Use a proxy,bridge Succeed tx: https://l1scan.scroll.io/tx/{transfer_bridge_eth_result[0]},Send balance{transfer_bridge_eth_result[1]} ETH'
+            return f'Use a proxy,bridge Succeed tx: https://l1scan.scroll.io/tx/{transfer_bridge_eth_result[0]},Send balance: {transfer_bridge_eth_result[1]} ETH'
         # 不使用代理发送
         else:
             # 导入rpc接口
@@ -79,14 +79,14 @@ def bridge(wallet_address, wallet_key):
                 transfer_bridge_eth_result = transfer_bridge_eth(w3, wallet_address, wallet_key)
             else:
                 return 'Insufficient balance'
-            return f'No use proxy,bridge Succeed tx: https://l1scan.scroll.io/tx/{transfer_bridge_eth_result[0]},Send balance{transfer_bridge_eth_result[1]} ETH'
+            return f'No use proxy,bridge Succeed tx: https://l1scan.scroll.io/tx/{transfer_bridge_eth_result[0]},Send balance: {transfer_bridge_eth_result[1]} ETH'
     except Exception as e:
         return e
 
 
 def payload_info():
     result = {
-        'Name': 'bridge_testnet_scroll_L1',
+        'Name': 'bridge_testnet_scroll_l1',
         'Author': 'web3inflare',
         'Type': 'bridge',
         'CreateDate': '2023-1-20',
