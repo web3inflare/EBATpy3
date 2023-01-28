@@ -11,6 +11,8 @@ import requests
 import yaml
 from twocaptcha import TwoCaptcha
 from lib.utils.output import status_print
+# 添加 requests 错误提示关闭
+requests.packages.urllib3.disable_warnings()
 
 with open('config.yaml', encoding='utf-8') as f:
     cont = f.read()
@@ -20,8 +22,6 @@ with open('config.yaml', encoding='utf-8') as f:
 proxy_url = config['Proxy_Api']['url']
 TwoCaptcha_Api = config['TwoCaptcha']['key']
 solver = TwoCaptcha(TwoCaptcha_Api)
-
-print(proxy_url)
 
 
 def check_config():

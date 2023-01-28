@@ -85,6 +85,11 @@ from inspect import getfullargspec
 
 ```
 ## Changelog
+### 2023.1.29
+#### Added
+ -  Add Scroll Bridge L1 to L2 payload
+#### Changed 
+ - Fix some details
 ### 2023.1.28
 #### Added
  -  Adds profile detection
