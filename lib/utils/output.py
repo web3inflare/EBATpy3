@@ -12,7 +12,6 @@ import sys
 import time
 
 
-
 def banner():
     banner_logo = r"""   ___    _          __                   ______            __   
   / _ |  (_)____ ___/ /____ ___   ___    /_  __/___  ___   / /___
@@ -193,7 +192,8 @@ def show(payload_module_list):
     type_playwright = 0  # 模拟
     type_mint = 0  # mint nft
     type_transfer = 0  # 转账
-    type_node = 0
+    type_node = 0  # node节点
+    type_bridge = 0  # 桥
     status_print('[*] Loading Payload ......', 0)
     for payload_module in payload_module_list:
         path = payload_module.__file__
@@ -215,6 +215,8 @@ def show(payload_module_list):
             elif 'transfer' in result['Type']:
                 type_transfer += 1
             elif 'node' in result['Type']:
+                type_node += 1
+            elif 'bridge' in result['Type']:
                 type_node += 1
             else:
                 type_faucet += 1
@@ -241,8 +243,9 @@ def show(payload_module_list):
             print('    Description: {0}'.format(description))
             print('    Description_cn: {0}'.format(description_cn))
     print(
-        '''[*] Total Payload: {0} \n[~] Query: {1} Swap: {2} Faucet: {3} Mint: {4} Transfer: {5} Playwright: {6} node: {7}'''
-        .format(len(payload_info_list), type_query, type_swap, type_faucet, type_mint, type_transfer, type_playwright,type_node))
+        '''[*] Total Payload: {0} \n[~] Query: {1} Swap: {2} Faucet: {3} Mint: {4} Transfer: {5} Playwright: {6} Node: {7} Bridge: {8}'''
+        .format(len(payload_info_list), type_query, type_swap, type_faucet, type_mint, type_transfer, type_playwright,
+                type_node,type_bridge))
 
 
 def output(futures):

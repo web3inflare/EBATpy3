@@ -11,6 +11,7 @@ from lib.core import engine
 from lib.utils import output
 from lib.utils import payload_init
 from csv import DictReader
+from lib.utils.check_config import check_config
 
 
 def EBATpy3_console(args):
@@ -19,6 +20,10 @@ def EBATpy3_console(args):
     if args.show:
         payload_module_list = payload_init.get_payload_module_list()
         output.show(payload_module_list)
+        sys.exit()
+    # 检测配置文件功能
+    if args.check:
+        check_config()
         sys.exit()
     if args.file:
         # 读取文件
@@ -49,6 +54,8 @@ def EBATpy3_console(args):
     elif 'transfer' == args.payload:
         payload_module_list = payload_init.get_payload_module_list_by_type(args.payload)
     elif 'node' == args.payload:
+        payload_module_list = payload_init.get_payload_module_list_by_type(args.payload)
+    elif 'bridge' == args.payload:
         payload_module_list = payload_init.get_payload_module_list_by_type(args.payload)
     elif args.payload:
         payload_module_list = payload_init.get_payload_module_list_by_search(args.payload.split(','))

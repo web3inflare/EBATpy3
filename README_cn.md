@@ -23,13 +23,15 @@
 - Python 3.7+
 - Works on Linux, Windows, Mac OSX, BSD, etc.
 ## 安装
-
-Install EBATpy3
-
 ``` bash
 # windows,mac,linux 
 pip3 install -r requirements.txt
 ```
+ - window OS:
+ - web3 需要c++运行库
+https://blog.51cto.com/u_8238263/6020380
+
+
 ## 使用示例
 
 ``` bash
@@ -45,31 +47,34 @@ python3 EBATpy3.py -p faucet_scrolltest,faucet_taikotest
 python3 EBATpy3.py -p faucet 
 # 设置线程池大小
 python3 EBATpy3.py -p all -t 100
+# 检测配置文件
+python3  EbATpy3.py --check 
 ```
 
 ## 常见问题
 ### proxy
 ```
+# 配置 config.yaml
 注册  https://doveproxy.net/ 
-1.goto API Builder
-Proxy Authentication Methods -> use ip whitelist
-Service duration -> 35 minutes
-Protocol -> http
-Output Format  -> text
-Get quantity -> 1
-Simulation of Proxy Generator
-get Proxy API
-
+1.API 生成器
+验证方式 -> 使用白名单
+ip使用时间 -> 35 分钟
+协议 -> http
+输出格式  -> text
+获取数量-> 1
+-----
 请添加ip进白名单！
+点击生成API URL
+
 
 ```
-***配置 config.yaml***
 ###  验证码
 ```
+# 配置 config.yaml
 注册  https://2captcha.com/
 
 ```
-***配置 config.yaml***
+
 
 ###  运行出现 ImportError: cannot import name 'getargspec' from 'inspect'
 查找到文件
@@ -82,6 +87,13 @@ C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\site-packages
 from inspect import getfullargspec
 
 ```
+
+## 变更日志
+### 2023.1.28
+#### 添加
+ -  添加 配置文件检测功能
+#### 变更 
+ - 添加 bridge 类型
 ### 2023.1.27
 #### 变更 
  - 变更 payload 规范

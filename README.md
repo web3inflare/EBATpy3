@@ -24,12 +24,14 @@ Web3 Blockchain Airdrop Task Script Rapid Response Framework Developed Based on 
 - Works on Linux, Windows, Mac OSX, BSD, etc.
 ## Installation
 
-Install EBATpy3
 
 ``` bash
 # windows,mac,linux 
 pip3 install -r requirements.txt
 ```
+ - window OS:
+ - web3 Requires the C++ runtime
+https://visualstudio.microsoft.com/
 ## Usage/Examples
 
 ``` bash
@@ -45,11 +47,14 @@ python3 EBATpy3.py -p faucet_scrolltest,faucet_taikotest
 python3 EBATpy3.py -p faucet 
 # Set thread pool (default 10 threads)
 python3 EBATpy3.py -p all -t 100
+# Detect the profile
+python3  EbATpy3.py --check 
 ```
 
 ## FAQ
 ### proxy
 ```
+Configure config.yaml
 Registration  https://doveproxy.net/ 
 1.goto API Builder
 Proxy Authentication Methods -> use ip whitelist
@@ -62,12 +67,12 @@ get Proxy API
 
 note: Add the IP address to the whitelist
 ```
-***Configure config.yaml***
 ###  Captcha
 ```
+Configure config.yaml
 Registration  https://2captcha.com/
 ```
-***Configure config.yaml***
+
 
 ###  ImportError: cannot import name 'getargspec' from 'inspect'
 windows:
@@ -80,7 +85,11 @@ from inspect import getfullargspec
 
 ```
 ## Changelog
-
+### 2023.1.28
+#### Added
+ -  Adds profile detection
+#### Changed 
+ - Add a bridge type
 ### 2023.1.27
 #### Changed 
  - Fix the payload specification

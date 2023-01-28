@@ -32,7 +32,6 @@ def payload_info():
 
 
 def run(**kwargs):
-    print(kwargs)
     wallet_address = kwargs['wallet_address']
     result = {
         'Name': 'query_arbitrum',

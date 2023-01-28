@@ -13,7 +13,7 @@ def get_parser():
     p.add_argument("-t", "--thread", type=int, help="Specify the maximum concurrent number of thread pools",
                    default="10")
     p.add_argument("--show", action='store_true', help="List All Payloads")
-
+    p.add_argument("--check", action='store_true', help="Detect the profile")
     args = parser.parse_args()
     return args
 
