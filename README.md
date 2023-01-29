@@ -89,6 +89,7 @@ from inspect import getfullargspec
 #### Added
  -  Add Scroll Bridge L1 to L2 payload
 #### Changed 
+ - Fix requirements
  - Fix some details
 ### 2023.1.28
 #### Added

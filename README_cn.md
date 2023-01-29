@@ -93,7 +93,8 @@ from inspect import getfullargspec
 #### 添加
  -  添加 scroll bridge l1 到l2 payload
 #### 变更 
- - 修正一些细节
+ -  修正requirements
+ -  修正一些细节
 ### 2023.1.28
 #### 添加
  -  添加 配置文件检测功能
