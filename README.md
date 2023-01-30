@@ -85,6 +85,10 @@ from inspect import getfullargspec
 
 ```
 ## Changelog
+### 2023.1.31
+#### Added
+ - add Sui , APTos Wallet generator
+ - add APTOS Mainnet/Devnet/Testnet balance query
 ### 2023.1.29
 #### Added
  -  Add Scroll Bridge L1 to L2 payload

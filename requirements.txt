@@ -6,3 +6,5 @@ tqdm==4.48.2
 twocaptcha==0.0.1
 web3==5.31.3
 websocket_client==1.5.0
+aptos-sdk
+bip_utils

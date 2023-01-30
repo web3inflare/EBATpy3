@@ -5,14 +5,13 @@
 @IDE ：PyCharm
 @Motto: 咕咕嘎嘎
 """
-import time
 
 from web3 import Web3, HTTPProvider
 from web3.middleware import geth_poa_middleware
 from lib.utils.proxy import get_proxy_simple
 
 
-def transfer_bridge_eth(w3, wallet_address, wallet_key, ):
+def transfer_bridge_eth(w3, wallet_address, wallet_key):
     try:
         # 校正地址
         from_address = Web3.toChecksumAddress(wallet_address)

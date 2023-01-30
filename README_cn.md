@@ -89,6 +89,10 @@ from inspect import getfullargspec
 ```
 
 ## 变更日志
+### 2023.1.31
+#### Added
+ - 添加 SUI,APTOS钱包生成
+ - 添加 APTOS 主网,测试网,开发网 余额查询
 ### 2023.1.29
 #### 添加
  -  添加 scroll bridge l1 到l2 payload
