@@ -27,7 +27,7 @@ def payload_info():
         'Type': 'query',
         'CreateDate': '2023-1-30',
         'UpdateDate': '2023-1-30',
-        'Network': "Devnet",
+        'Network': "devnet",
         'Description': "query APTos Devnet balance",
         'Description_cn': "查询 APTos 开发网 余额",
     }
