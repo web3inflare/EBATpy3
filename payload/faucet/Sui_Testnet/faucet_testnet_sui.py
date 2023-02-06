@@ -130,6 +130,9 @@ def joiner_server(token, proxies):
     # 无需验证码
     elif join_request.status_code == 200:
         return join_request.status_code
+    # 打印其他错误
+    else:
+        return join_request.text
 
 
 def websocket_connect(token, proxies):
