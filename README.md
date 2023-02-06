@@ -85,6 +85,9 @@ from inspect import getfullargspec
 
 ```
 ## Changelog
+### 2023.1.5
+ -  Add Sui Testnet faucet,Sui Testnet mint
+ -  Add APTos Devnet faucet
 ### 2023.1.31
 #### Added
  - add Sui , APTos Wallet generator
