@@ -44,3 +44,24 @@ class RpcTxDataSerializer:
                 tx.gas_payment,
                 tx.gas_budget,
             ])
+
+    def get_balance(self, signer_addr):
+        response = self.send_request_to_rpc(
+            method='sui_getObjectsOwnedByAddress',
+            params=[
+                signer_addr
+            ])
+        balance = 0
+        for el in response['result']:
+            object_id = el['objectId']
+            object_data = self.send_request_to_rpc(
+                method='sui_getObject',
+                params=[
+                    str(object_id)
+                ])
+            try:
+                balance += int(object_data['result']['details']['data']['fields']['balance'])
+            except KeyError:
+                continue
+        else:
+            return balance / 1000000000

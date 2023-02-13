@@ -85,13 +85,16 @@ from inspect import getfullargspec
 
 ```
 ## Changelog
+### 2023.2.13
+ - Add Sui Testnet query Balance 
+ - Remove wallet.csv format judgment
 ### 2023.1.5
  -  Add Sui Testnet faucet,Sui Testnet mint
  -  Add APTos Devnet faucet
 ### 2023.1.31
 #### Added
- - add Sui , APTos Wallet generator
- - add APTOS Mainnet/Devnet/Testnet balance query
+ - Add Sui , APTos Wallet generator
+ - Add APTOS Mainnet/Devnet/Testnet balance query
 ### 2023.1.29
 #### Added
  -  Add Scroll Bridge L1 to L2 payload

@@ -64,3 +64,4 @@ class SignerWithProvider:
             version_split = version_str.split(".")
             self._rpc_major_version = int(version_split[0])
             self._rpc_minor_version = int(version_split[1])
+

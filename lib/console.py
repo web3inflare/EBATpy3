@@ -30,10 +30,6 @@ def EBATpy3_console(args):
         with open(args.file, mode='r') as read_obj:
             dict_reader = DictReader(read_obj)
             for i in list(dict_reader):
-                # 判断是否有表头
-                if 'wallet_address' not in i:
-                    output.status_print('[-] The CSV file format is incorrect', 2)
-                    sys.exit()
                 target_list.append(i)
     # 线程
     if args.thread:

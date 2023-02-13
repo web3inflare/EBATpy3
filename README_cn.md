@@ -89,11 +89,13 @@ from inspect import getfullargspec
 ```
 
 ## 变更日志
-### 2023.1.31
+### 2023.2.13
+ -  添加 Sui测试网 余额查询
+ -  删除 wallet.csv 格式判断
 ### 2023.1.5
  - 添加 Sui 测试网 faucet mint
  - 添加 Aptos Devnet faucet
-#### Added
+#### 添加
  - 添加 SUI,APTOS钱包生成
  - 添加 APTOS 主网,测试网,开发网 余额查询
 ### 2023.1.29
