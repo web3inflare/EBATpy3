@@ -33,8 +33,7 @@ def payload_info():
 
 
 def run(**kwargs):
-    # sui_address = kwargs['sui_address']
-    sui_address = '0x6b4e64d71fdfbb5b760ec37531221da153533d3f'
+    sui_address = kwargs['sui_address']
     result = {
         'Name': 'query_testnet_sui',
         'Type': 'query',

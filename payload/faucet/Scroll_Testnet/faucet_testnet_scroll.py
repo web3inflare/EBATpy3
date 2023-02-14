@@ -10,7 +10,7 @@ import requests
 import yaml
 from twocaptcha import TwoCaptcha
 from lib.utils.proxy import get_proxy
-
+# from lib.utils.proxy import proxy_test
 with open('config.yaml', encoding='utf-8') as f:
     cont = f.read()
     config = yaml.load(cont, Loader=yaml.SafeLoader)
@@ -24,17 +24,17 @@ solver = TwoCaptcha(TwoCaptcha_Api)
 def faucet(address, token, proxies):
     payload = f"-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"address\"\r\n\r\n{address}\r\n-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"h-captcha-response\"\r\n\r\n{token}\r\n-----011000010111000001101001--\r\n\r\n"
     headers = {
-        "Accept": "*/*",
-        "Cache-Control": "no-cache",
-        "Connection": "keep-alive",
-        "Content-Type": "multipart/form-data; boundary=---011000010111000001101001",
-        "Origin": "https://scroll.io",
-        "Pragma": "no-cache",
-        "Referer": "https://scroll.io/",
-        "Sec-Fetch-Dest": "empty",
-        "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Site": "same-site",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36",
+        "authority": "prealpha-api.scroll.io",
+        "accept": "*/*",
+        "content-type": "multipart/form-data; boundary=---011000010111000001101001",
+        "origin": "https://scroll.io",
+        "referer": "https://scroll.io/",
+        "sec-ch-ua-mobile": "?0",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-site",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.41",
+        "Accept-Encoding": "deflate, gzip"
     }
     response = requests.request("POST", "https://prealpha-api.scroll.io/faucet/api/claim", data=payload,
                                 headers=headers, proxies=proxies, verify=False)
@@ -67,7 +67,7 @@ def run(**kwargs):
     }
     try:
         get_captcha_token = \
-            solver.hcaptcha('541838f2-e585-4726-b398-24102b1d4df8', "https://scroll.io/prealpha/faucet")['code']
+            solver.hcaptcha('65f2be91-305e-428f-a85e-347b038bf930', "https://scroll.io/prealpha/faucet")['code']
         faucet_result = faucet(wallet_address, get_captcha_token, get_proxy())
         if 'eth_tx_hash' in faucet_result:
             result['Payload_msg'] = 'Faucet Succeed'
@@ -82,5 +82,5 @@ def run(**kwargs):
 
 
 if __name__ == '__main__':
-    test = run("0x8dc847af872947ac18d5d63fa646eb65d4d99560")
+    test = run()
     print(test['Payload_msg'])
